@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WStipulation" load_steps=3 format=3 uid="uid://bwqnnx7pyn5yx"]
+
+[ext_resource type="Script" path="res://addons/event_sheet/scripts/event.gd" id="1_0iv63"]
+[ext_resource type="Texture2D" uid="uid://b50jpu11ld31l" path="res://icon.svg" id="1_fqit1"]
+
+[resource]
+script = ExtResource("1_0iv63")
+id = "on_start_of_layout"
+title = "On start of layout"
+icon = ExtResource("1_fqit1")
+description = "Triggered at the start of the current layout."
+parameters = {}
+group = "Start & End"

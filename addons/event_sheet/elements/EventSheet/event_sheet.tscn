@@ -1,0 +1,182 @@
+[gd_scene load_steps=2 format=3 uid="uid://bch7w7cwxwqsn"]
+
+[ext_resource type="Script" path="res://addons/event_sheet/elements/EventSheet/event_sheet.gd" id="1_f4lja"]
+
+[node name="Event Sheet" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_f4lja")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+size = Vector2i(98, 35)
+item_count = 1
+item_0/text = "Add Event"
+
+[node name="AddWindow" type="Window" parent="."]
+title = "Add Stipulation"
+position = Vector2i(280, 170)
+size = Vector2i(550, 300)
+visible = false
+min_size = Vector2i(550, 300)
+
+[node name="Panel" type="Panel" parent="AddWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AddWindow/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AddWindow/Panel/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Items" type="GridContainer" parent="AddWindow/Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+columns = 5
+
+[node name="AddEventOrAction" type="Window" parent="."]
+auto_translate_mode = 1
+title = "Add Stipulation"
+position = Vector2i(280, 170)
+size = Vector2i(550, 300)
+visible = false
+min_size = Vector2i(550, 300)
+
+[node name="Panel" type="Panel" parent="AddEventOrAction"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AddEventOrAction/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AddEventOrAction/Panel/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddEventOrAction/Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="SetParameter" type="Window" parent="."]
+auto_translate_mode = 1
+title = "Add Stipulation"
+position = Vector2i(280, 170)
+size = Vector2i(550, 300)
+visible = false
+min_size = Vector2i(550, 300)
+
+[node name="Panel" type="Panel" parent="SetParameter"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SetParameter/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SetParameter/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="SetParameter/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Секунд: Количество секунд ожидания перед запуском следующего действия."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SetParameter/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Parameters" type="VBoxContainer" parent="SetParameter/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Buttons" type="HBoxContainer" parent="SetParameter/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+
+[node name="Back" type="Button" parent="SetParameter/Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Назад"
+icon_alignment = 1
+
+[node name="Finish" type="Button" parent="SetParameter/Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Готово"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="index_pressed" from="PopupMenu" to="." method="_on_popup_menu_index_pressed"]
+[connection signal="close_requested" from="AddWindow" to="." method="_on_add_window_close_requested"]
+[connection signal="close_requested" from="AddEventOrAction" to="." method="_on_add_event_or_action_close_requested"]
+[connection signal="close_requested" from="SetParameter" to="." method="_on_set_parameter_close_requested"]

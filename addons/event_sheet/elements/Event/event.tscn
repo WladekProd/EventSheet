@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://cw0pqfra31e81"]
+
+[ext_resource type="Script" path="res://addons/event_sheet/elements/Event/event.gd" id="1_hmjso"]
+[ext_resource type="Texture2D" uid="uid://3aayah87ti8k" path="res://addons/event_sheet/icons/divider.svg" id="2_68v1o"]
+[ext_resource type="Texture2D" uid="uid://b50jpu11ld31l" path="res://icon.svg" id="2_xyfqy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i05iu"]
+bg_color = Color(0.228214, 0.249946, 0.307807, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afo4e"]
+bg_color = Color(0.228214, 0.249946, 0.307807, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77k0v"]
+bg_color = Color(0.228214, 0.249946, 0.307807, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4qxe"]
+bg_color = Color(0.228214, 0.249946, 0.307807, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnt1a"]
+bg_color = Color(0.170108, 0.187651, 0.234401, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egcj0"]
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.100632, 0.109839, 0.143618, 1)
+
+[node name="Event" type="Button"]
+custom_minimum_size = Vector2(200, 30)
+offset_right = 200.0
+offset_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_i05iu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_i05iu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_afo4e")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_77k0v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v4qxe")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_v4qxe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v4qxe")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_v4qxe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hnt1a")
+script = ExtResource("1_hmjso")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_xyfqy")
+expand_mode = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer" groups=["event_split"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/autohide = 0
+theme_override_icons/grabber = ExtResource("2_68v1o")
+theme_override_icons/h_grabber = ExtResource("2_68v1o")
+theme_override_icons/v_grabber = ExtResource("2_68v1o")
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "Group Name"
+vertical_alignment = 1
+
+[node name="Event" type="Label" parent="MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Event"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_egcj0")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="dragged" from="MarginContainer/HBoxContainer/HSplitContainer" to="." method="_on_h_split_container_dragged"]

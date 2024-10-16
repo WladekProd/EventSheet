@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyoxlt8vnfv5y"]
+
+[ext_resource type="Script" path="res://addons/event_sheet/elements/Action/action.gd" id="1_3aavk"]
+[ext_resource type="Texture2D" uid="uid://b50jpu11ld31l" path="res://icon.svg" id="1_alvq1"]
+[ext_resource type="Texture2D" uid="uid://3aayah87ti8k" path="res://addons/event_sheet/icons/divider.svg" id="3_rwgyg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abtk4"]
+bg_color = Color(0.139034, 0.154246, 0.194795, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2g6pv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1amek"]
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.130128, 0.144663, 0.18341, 1)
+
+[node name="Action" type="Button"]
+custom_minimum_size = Vector2(200, 30)
+offset_right = 200.0
+offset_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_abtk4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_abtk4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_abtk4")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_abtk4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_abtk4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_abtk4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_abtk4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_2g6pv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2g6pv")
+script = ExtResource("1_3aavk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_alvq1")
+expand_mode = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer" groups=["action_split"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/autohide = 0
+theme_override_icons/grabber = ExtResource("3_rwgyg")
+theme_override_icons/h_grabber = ExtResource("3_rwgyg")
+theme_override_icons/v_grabber = ExtResource("3_rwgyg")
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "Group Name"
+vertical_alignment = 1
+
+[node name="Action" type="Label" parent="MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Action"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_1amek")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="dragged" from="MarginContainer/HBoxContainer/HSplitContainer" to="." method="_on_h_split_container_dragged"]

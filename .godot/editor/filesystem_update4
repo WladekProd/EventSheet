@@ -1,0 +1,11 @@
+res://Main.tscn
+res://addons/event_sheet/default_shortcut.tres
+res://addons/event_sheet/plugins/actions/create_object.tres
+res://addons/event_sheet/plugins/groups/system.tres
+res://addons/event_sheet/elements/EventSheet/event_sheet.gd
+res://demo_project/demo_scene.tscn
+res://addons/event_sheet/elements/EventSheet/event_sheet.tscn
+res://addons/event_sheet/elements/Blank Body/blank_body.tscn
+res://addons/event_sheet/elements/Event/event.tscn
+res://addons/event_sheet/elements/Action/action.tscn
+res://addons/event_sheet/scripts/autoload.gd

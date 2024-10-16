@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WGroup" load_steps=7 format=3 uid="uid://bw6516amr7gxx"]
+
+[ext_resource type="Script" path="res://addons/event_sheet/scripts/action.gd" id="1_exj57"]
+[ext_resource type="Resource" uid="uid://cuv8h25ffmm1v" path="res://addons/event_sheet/plugins/actions/create_object.tres" id="1_jfqia"]
+[ext_resource type="Texture2D" uid="uid://b50jpu11ld31l" path="res://icon.svg" id="2_stjpp"]
+[ext_resource type="Script" path="res://addons/event_sheet/scripts/event.gd" id="3_jjl4f"]
+[ext_resource type="Script" path="res://addons/event_sheet/scripts/group.gd" id="3_v5mtm"]
+[ext_resource type="Resource" uid="uid://bwqnnx7pyn5yx" path="res://addons/event_sheet/plugins/events/on_start_of_layout.tres" id="4_t1tab"]
+
+[resource]
+script = ExtResource("3_v5mtm")
+id = "system"
+title = "System"
+icon = ExtResource("2_stjpp")
+actions = Array[ExtResource("1_exj57")]([ExtResource("1_jfqia")])
+events = Array[ExtResource("3_jjl4f")]([ExtResource("4_t1tab")])

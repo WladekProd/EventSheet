@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WAction" load_steps=3 format=3 uid="uid://cuv8h25ffmm1v"]
+
+[ext_resource type="Texture2D" uid="uid://b50jpu11ld31l" path="res://icon.svg" id="1_asf4x"]
+[ext_resource type="Script" path="res://addons/event_sheet/scripts/action.gd" id="1_m3b6o"]
+
+[resource]
+script = ExtResource("1_m3b6o")
+id = "create_object"
+title = "Create object"
+icon = ExtResource("1_asf4x")
+description = "Create a new instance of an object in the current layout."
+parameters = {
+"Layer": 0,
+"Name": "",
+"Object": "res://demo_project/icon.tscn",
+"X": 0.0,
+"Y": 0.0
+}
+group = "General"

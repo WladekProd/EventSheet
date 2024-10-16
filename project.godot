@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="EventSheet"
+run/main_scene="res://demo_project/demo_scene.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+WES="*res://addons/event_sheet/scripts/autoload.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/event_sheet/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/plugin_refresher/plugin.cfg")
+
+[global_group]
+
+action_split="# EventSheet Plugin"
+blank_body_split="# EventSheet Plugin"
+event_split="# EventSheet Plugin"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

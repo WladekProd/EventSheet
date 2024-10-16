@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://duwm5y7ctopsr"]
+
+[ext_resource type="Script" path="res://addons/event_sheet/elements/Blank Body/blank_body.gd" id="1_lky6i"]
+[ext_resource type="Texture2D" uid="uid://3aayah87ti8k" path="res://addons/event_sheet/icons/divider.svg" id="2_ol7nf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwmv1"]
+bg_color = Color(0.0943631, 0.105372, 0.138388, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84b8m"]
+bg_color = Color(0.116702, 0.13021, 0.166223, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 8.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_upddj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjnry"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2pkx"]
+draw_center = false
+border_width_left = 5
+border_color = Color(0.973714, 0, 0.33337, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 6.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[node name="Blank Body" type="MarginContainer"]
+custom_minimum_size = Vector2(1152, 25)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_lky6i")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uwmv1")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." groups=["blank_body_split"]]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/autohide = 0
+theme_override_icons/grabber = ExtResource("2_ol7nf")
+theme_override_icons/h_grabber = ExtResource("2_ol7nf")
+theme_override_icons/v_grabber = ExtResource("2_ol7nf")
+split_offset = -407
+
+[node name="Event" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_84b8m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Event"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Action" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_upddj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Action"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="AddActionItem" type="MarginContainer" parent="HSplitContainer/Action/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="AddAction" type="Button" parent="HSplitContainer/Action/VBoxContainer/AddActionItem"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_pressed_color = Color(0.239216, 0.258824, 0.317647, 1)
+theme_override_colors/font_hover_color = Color(0.446384, 0.474771, 0.559106, 1)
+theme_override_colors/font_pressed_color = Color(0.239216, 0.258824, 0.317647, 1)
+theme_override_colors/font_focus_color = Color(0.239216, 0.258824, 0.317647, 1)
+theme_override_colors/font_color = Color(0.239216, 0.258824, 0.317647, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fjnry")
+text = "+ Add Action"
+flat = true
+alignment = 0
+
+[node name="Selected" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2pkx")
+
+[connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="dragged" from="HSplitContainer" to="." method="_on_h_split_container_dragged"]
+[connection signal="button_up" from="HSplitContainer/Action/VBoxContainer/AddActionItem/AddAction" to="." method="_on_add_action_button_up"]
