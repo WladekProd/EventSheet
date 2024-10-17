@@ -9,6 +9,11 @@ The full implementation of this plugin will facilitate the transition of Constru
 The project is completely free and open source under the very free [MIT license](https://github.com/WladekProd/EventSheet/blob/main/LICENSE).
 ## FAQ
 
+#### What is an Event Sheet:
+
+Events consist of conditions that check if certain criteria are met, e.g. “Is the spacebar pressed?”. If all conditions are met, all actionsin the event occur, e.g. “Create bullet object”.
+After all actions, there are sub-events that can check for other conditions, create more actions, more sub-events, and so on. Using this system, we can create complex functionality for our games and applications.
+
 #### The “addons” folder:
 
 - event_sheet - this is the main EventSheet plugin.
